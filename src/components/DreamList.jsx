@@ -1,23 +1,20 @@
-import React from "react";
+export default function DreamList({ dreams }) {
+  if (dreams.length === 0) {
+    return <p className="text-neutralDark italic">No dreams added yet.</p>;
+  }
 
-const DreamList = ({ dreams }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
       {dreams.map(({ id, text, imageUrl }) => (
-        <div
-          key={id}
-          className="bg-white rounded shadow p-4 flex flex-col items-center"
-        >
+        <div key={id} className="bg-neutralLight p-4 rounded shadow">
           <img
             src={imageUrl}
             alt="Dream visual"
-            className="w-full h-40 object-cover rounded mb-4"
+            className="w-full h-48 object-cover rounded mb-3"
           />
-          <p className="text-gray-800 text-center">{text}</p>
+          <p className="text-neutralDark">{text}</p>
         </div>
       ))}
     </div>
   );
-};
-
-export default DreamList;
+}

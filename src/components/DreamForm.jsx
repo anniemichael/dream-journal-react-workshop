@@ -1,39 +1,30 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const DreamForm = ({ addDream }) => {
-  const [dream, setDream] = useState("");
+export default function DreamForm({ addDream }) {
+  const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!dream.trim()) return;
-
-    const newDream = {
-      id: Date.now(),
-      text: dream.trim(),
-      imageUrl: `https://picsum.photos/300/200?random=${Date.now()}`,
-    };
-
-    addDream(newDream);
-    setDream("");
+    if (!input.trim()) return;
+    addDream(input.trim());
+    setInput("");
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 mb-6">
       <input
         type="text"
-        placeholder="Enter your dream or goal"
-        value={dream}
-        onChange={(e) => setDream(e.target.value)}
-        className="border rounded px-3 py-2 w-full"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Write your dream or goal..."
+        className="border border-neutralMid rounded p-2 w-full focus:outline-none focus:ring-2 focus:ring-accent"
       />
       <button
         type="submit"
-        className="mt-2 bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+        className="bg-accent text-white px-4 py-2 rounded hover:bg-accentHover focus:outline-none focus:ring-2 focus:ring-accentHover"
       >
         Add Dream
       </button>
     </form>
   );
-};
-
-export default DreamForm;
+}
