@@ -9,8 +9,16 @@ export default function App() {
   const addDream = (dream) => {
     setDreams((prev) => [
       ...prev,
-      { id: Date.now(), text: dream, imageUrl: `https://picsum.photos/400/300?random=${Date.now()}` },
+      {
+        id: Date.now(),
+        text: dream,
+        imageUrl: `https://picsum.photos/400/300?random=${Date.now()}`,
+      },
     ]);
+  };
+
+  const deleteDream = (id) => {
+    setDreams((prev) => prev.filter((dream) => dream.id !== id));
   };
 
   return (
@@ -18,8 +26,12 @@ export default function App() {
       <h1 className="text-3xl font-bold text-accent mb-6">Dream Journal</h1>
 
       <DreamForm addDream={addDream} />
-      <DreamList dreams={dreams} />
-      <InspirationCard />
+      <DreamList dreams={dreams} deleteDream={deleteDream} />
+
+      <div className="mt-12 p-6 bg-white rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4 text-neutralDark">Inspiration</h2>
+        <InspirationCard />
+      </div>
     </div>
   );
 }
