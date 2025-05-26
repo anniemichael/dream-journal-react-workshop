@@ -41,20 +41,6 @@ import './index.css';
 
 ---
 
-## 📁 Project Structure
-```
-src/
-├── App.jsx
-├── index.css
-├── main.jsx
-└── components/
-    ├── DreamForm.jsx
-    ├── DreamList.jsx
-    └── InspirationCard.jsx
-```
-
----
-
 ## 💡 Key Features
 - Add dreams/goals via an input field
 - View a list of all submitted dreams
