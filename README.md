@@ -15,16 +15,34 @@ npm install
 
 ### 2. Install Tailwind CSS
 ```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+npm install -D tailwindcss postcss autoprefixer @tailwindcss/postcss
+
 ```
 
-Update your `tailwind.config.js`:
+Update or create your `tailwind.config.js`:
 ```js
-content: [
-  "./index.html",
-  "./src/**/*.{js,ts,jsx,tsx}"
-]
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Create postcss.config.js
+```js
+
+export default {
+  plugins: [
+    tailwindcss(),
+    autoprefixer()
+  ]
+}
 ```
 
 In `src/index.css`, add:
