@@ -1,37 +1,35 @@
-import { useState } from "react";
-import DreamForm from "./components/DreamForm";
-import DreamList from "./components/DreamList";
-import InspirationCard from "./components/InspirationCard";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-export default function App() {
-  const [dreams, setDreams] = useState([]);
-
-  const addDream = (dream) => {
-    setDreams((prev) => [
-      ...prev,
-      {
-        id: Date.now(),
-        text: dream,
-        imageUrl: `https://picsum.photos/400/300?random=${Date.now()}`,
-      },
-    ]);
-  };
-
-  const deleteDream = (id) => {
-    setDreams((prev) => prev.filter((dream) => dream.id !== id));
-  };
+function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-neutralLight min-h-screen">
-      <h1 className="text-3xl font-bold text-accent mb-6">Dream Journal</h1>
-
-      <DreamForm addDream={addDream} />
-      <DreamList dreams={dreams} deleteDream={deleteDream} />
-
-      <div className="mt-12 p-6 bg-white rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4 text-neutralDark">Inspiration</h2>
-        <InspirationCard />
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
       </div>
-    </div>
-  );
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
+
+export default App
