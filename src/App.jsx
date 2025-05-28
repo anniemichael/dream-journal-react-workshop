@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import DreamForm from "./components/DreamForm";
 import DreamList from "./components/DreamList";
+import InspirationCard from "./components/InspirationCard";
 
 function App() {
 
@@ -33,8 +34,13 @@ function App() {
     <div className="max-w-4xl mx-auto p-6 bg-neutralLight min-h-screen">
       <h1 className="text-3xl font-bold text-accent mb-6">My Dream Journal</h1>
 
-      <DreamForm addDream={addDream} />
-      <DreamList dreams={dreams} deleteDream={deleteDream} />
+      <DreamForm addDream={addDream}/>
+      <DreamList dreams={dreams} deleteDream={deleteDream}/>
+
+      <div className="mt-12 p-6 bg-white rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold mb-4 text-neutralDark">Inspiration</h2>
+        <InspirationCard/>
+      </div>
 
     </div>
   )
